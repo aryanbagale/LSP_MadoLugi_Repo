@@ -1,0 +1,15 @@
+This is a test text document 999 for the word counter I built for my LSP class.
+
+ We'll be very capable by the end of the class.
+ 
+ I'm excited to learn more Java.
+ 
+ i'm we'll 
+ 
+ '9999'
+ 
+ This this is crazy to me that Java is so different from Python.
+ 
+ they'll not know 
+ 
+they'llll know
