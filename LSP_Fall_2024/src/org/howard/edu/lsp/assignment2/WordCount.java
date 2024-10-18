@@ -1,54 +1,71 @@
-package org.howard.edu.lsp.assignment2;
+package org.howard.edu.lsp.midterm.question1;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.Stream;
+public class Book {
+    // Properties of the Book class
+    private String bookTitle;  // Title of the book
+    private String bookAuthor; // Author of the book
+    private String bookISBN;   // ISBN number (unique identifier)
+    private int publicationYear;  // Year the book was published
 
-public class WordCount {
+    // Constructor to initialize the Book object
+    public Book(String bookTitle, String bookAuthor, String bookISBN, int publicationYear) {
+        this.bookTitle = bookTitle;
+        this.bookAuthor = bookAuthor;
+        this.bookISBN = bookISBN;
+        this.publicationYear = publicationYear;
+    }
 
-    public static void main(String[] args) {
-        String inputFilePath = "src/org/howard/edu/lsp/assignment2/words.txt";  // Path to the input file
-        Map<String, Integer> wordFrequencyMap = new HashMap<>();  // Map to store word frequencies
+    // Getter and setter for bookTitle
+    public String getBookTitle() {
+        return bookTitle;
+    }
 
-        try (Stream<String> fileLines = Files.lines(Paths.get(inputFilePath))) {
-            // Iterate through each line from the file
-            fileLines.forEach(textLine -> {
-                // Output each line to the console (echoing the input)
-                System.out.println(textLine);
+    public void setBookTitle(String bookTitle) {
+        this.bookTitle = bookTitle;
+    }
 
-                // Removing unwanted characters and handling apostrophes for contractions
-                String[] parsedWords = textLine.toLowerCase()
-                        .replaceAll("[^a-zA-Z\\s']", "")  // Remove non-letter characters, keeping apostrophes
-                        .split("\\s+");  // Split the text by whitespace to get individual words
+    // Getter and setter for bookAuthor
+    public String getBookAuthor() {
+        return bookAuthor;
+    }
 
-                // Process each word for counting, ignoring trivial words (length <= 3)
-                for (String word : parsedWords) {
-                    // If a contraction exists, split by apostrophe and process each part separately
-                    if (word.contains("'")) {
-                        String[] subWords = word.split("'");
-                        for (String part : subWords) {
-                            if (part.length() > 3) {  // Only count words longer than 3 characters
-                                wordFrequencyMap.put(part, wordFrequencyMap.getOrDefault(part, 0) + 1);
-                            }
-                        }
-                    } else if (word.length() > 3) {
-                        // If it's not a contraction and longer than 3 characters, count the word
-                        wordFrequencyMap.put(word, wordFrequencyMap.getOrDefault(word, 0) + 1);
-                    }
-                }
-            });
+    public void setBookAuthor(String bookAuthor) {
+        this.bookAuthor = bookAuthor;
+    }
 
-            // Sorting the words alphabetically and printing their frequencies
-            wordFrequencyMap.entrySet().stream()
-                    .sorted(Map.Entry.<String, Integer>comparingByKey())
-                    .forEach(entry -> System.out.println(entry.getKey() + "\t" + entry.getValue()));
+    // Getter and setter for bookISBN
+    public String getBookISBN() {
+        return bookISBN;
+    }
 
-        } catch (IOException ex) {
-            // Handle any I/O errors that occur during file reading
-            ex.printStackTrace();
-        }
+    public void setBookISBN(String bookISBN) {
+        this.bookISBN = bookISBN;
+    }
+
+    // Getter and setter for publicationYear
+    public int getPublicationYear() {
+        return publicationYear;
+    }
+
+    public void setPublicationYear(int publicationYear) {
+        this.publicationYear = publicationYear;
+    }
+
+    // Overriding equals() to compare books based on ISBN and author
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Book otherBook = (Book) obj;
+        return bookISBN.equals(otherBook.bookISBN) && bookAuthor.equals(otherBook.bookAuthor);
+    }
+
+    // Overriding toString() to return a string representation of the Book object
+    @Override
+    public String toString() {
+        return "Title: " + bookTitle + 
+               ", Author: " + bookAuthor + 
+               ", ISBN: " + bookISBN + 
+               ", Year Published: " + publicationYear;
     }
 }
