@@ -153,3 +153,4 @@ public class IntegerSet {
 	public void diff(IntegerSet intSetb) {
 		set.removeAll(intSetb.set);  // Remove common elements
 	}
+}
