@@ -178,5 +178,6 @@ public class IntegerSetTest {
         setB.clear();
         setB.add(7);
         setA.union(setB);
-
+    }
+}
    
