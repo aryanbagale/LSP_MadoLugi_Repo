@@ -15,7 +15,7 @@ public class RandomNumberClient {
         System.out.println("Java Random Number: " + service.generateRandomNumber());
 
         // Set the strategy to RandomNumberAlgorithm and generate a random number
-        service.setStrategy(new RandomNumberAlgorithm());
+        service.setStrategy(new RandomNumberAlgo());
         System.out.println("LCG Random Number: " + service.generateRandomNumber());
     }
 }

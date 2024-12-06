@@ -4,7 +4,7 @@ package org.howard.edu.lsp.finalexam.question2;
  * Implementation of RandomNumberStrategy using a Linear Congruential Generator (LCG).
  * An LCG is a simple algorithm for generating a sequence of pseudo-random numbers.
  */
-public class RandomNumberAlgorithm implements RandomNumber {
+public class RandomNumberAlgo implements RandomNumber {
     
     // Initial seed value (X0) for the LCG
     private int Xo = 5; 
@@ -24,7 +24,7 @@ public class RandomNumberAlgorithm implements RandomNumber {
     /**
      * Constructor initializes the LCG with the seed value.
      */
-    public RandomNumberAlgorithm() {
+    public RandomNumberAlgo() {
         this.current = Xo;
     }
 
